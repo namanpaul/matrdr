@@ -6,8 +6,8 @@
 #install.packages("R.matlab")
 #install.packages("Boruta")
 #install.packages("caret")
-library(caret)
-library(Boruta)
+#library(caret)
+#library(Boruta)
 library(R.matlab)
 library(readr)
 library(ff)
@@ -17,7 +17,7 @@ library(dplyr)
 
 #read file structure based on the manual
 path <- system.file("mat-files", package="R.matlab")
-pathname <- file.path(path, "file1.mat")
+pathname <- file.path(path, "file2.mat")
 data_mat <- readMat(pathname)
 print(data_mat)
 

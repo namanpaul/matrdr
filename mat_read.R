@@ -17,9 +17,9 @@ library(dplyr)
 
 #read file structure based on the manual
 path <- system.file("mat-files", package="R.matlab")
-pathname <- file.path(path, "file2_r = 2.285, DC = 1.0, DD = 1.0, AC = 0.0, AD = 0.0, RC = 0.0, RD = 0.0.mat")
-data_mat <- readMat(pathname)
-print(data_mat)
+#pathname <- file.path(path, "file2_r = 2.285, DC = 1.0, DD = 1.0, AC = 0.0, AD = 0.0, RC = 0.0, RD = 0.0.mat")
+#data_mat <- readMat(pathname)
+#print(data_mat)
 
 #converting the list into a df
 #head of state
@@ -36,7 +36,12 @@ head(data_mat$discrParam)
 
 
 #attempting to store the list of files in a temp var
-temp_var <- list.files(path = "/usr/local/lib/R/site-library/R.matlab/mat-files/",
+#home machine
+#temp_var <- list.files(path = "/usr/local/lib/R/site-library/R.matlab/mat-files/",
+#                       pattern = "*.mat")
+
+#thinkpad
+temp_var <- list.files(path = "/home/naman/R/x86_64-pc-linux-gnu-library/3.4/R.matlab/mat-files",
                        pattern = "*.mat")
 
 #reading each of the files into a separate df
@@ -234,7 +239,10 @@ restore_vars <- function(x) {
 restore_vars(state_data_1)
 
 
-dfnames <- Filter(function(x) class(get(x))=='data.frame', ls(env=globalenv()))
+dfnames <- as.list(Filter(function(x) class(get(x))=='data.frame', ls(env=globalenv())))
+
+
+
   result <- list(state_data_1, state_data_10) %>%
   
 dfnames <- list(dfnames)
